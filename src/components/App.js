@@ -7,8 +7,6 @@ import MainLayaut from './MainLayout/MainLayaut';
 import MovieDetails from './MovieDetails/MovieDetails';
 import Cast from './Cast/Cast';
 import Revievs from './Reviews/Revievs';
-import Notfound from './NotFound/Notfound';
-
 export const App = () => {
   return (
     <div>
