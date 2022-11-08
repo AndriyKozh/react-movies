@@ -7,6 +7,7 @@ import MainLayaut from './MainLayout/MainLayaut';
 import MovieDetails from './MovieDetails/MovieDetails';
 import Cast from './Cast/Cast';
 import Revievs from './Reviews/Revievs';
+import Notfound from './NotFound/Notfound';
 
 export const App = () => {
   return (
@@ -14,12 +15,13 @@ export const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainLayaut />}>
-            <Route index element={<Home />}></Route>
+            <Route index element={<Home />} />
             <Route path="movies" element={<Movies />} />
             <Route path="movies/:id" element={<MovieDetails />}>
               <Route path="cast" element={<Cast />} />
               <Route path="reviews" element={<Revievs />} />
             </Route>
+            <Route path="*" element={<Home />} />
           </Route>
         </Routes>
       </BrowserRouter>

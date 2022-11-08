@@ -6,6 +6,7 @@ import { MoviesInput, MoviesButton } from './Movies.style';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+
   const [submitContent, setSubmitContent] = useState([]);
   const queryRequest = searchParams.get('query') || '';
 
