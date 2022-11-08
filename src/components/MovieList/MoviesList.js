@@ -21,10 +21,12 @@ function MovieDetails({ data }) {
 }
 
 MovieDetails.propTypes = {
-  data: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-  }),
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 export default MovieDetails;

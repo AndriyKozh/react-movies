@@ -16,7 +16,7 @@ const Cast = () => {
       } catch (error) {}
     };
     getCastMovie();
-  }, []);
+  }, [id]);
 
   return (
     <CastBlock>
