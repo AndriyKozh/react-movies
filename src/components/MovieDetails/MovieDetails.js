@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
+
 import { Suspense } from 'react';
+import { ColorRing } from 'react-loader-spinner';
 import { getMoviesInfo } from 'Servis/Api';
 import { AiFillBackward } from 'react-icons/ai';
+import { LoadingContent } from 'Loading.style';
 import {
   MovieDetailsBlock,
   MovieDetailsImgBlock,
@@ -78,7 +81,21 @@ const MovieDetails = () => {
           <Link to="reviews">Reviews</Link>
         </MovieDetailsInfoList>
       </MovieDetailsInfoAdditional>
-      <Suspense fallback={<div>Loading ...</div>}></Suspense>
+      <Suspense
+        fallback={
+          <LoadingContent>
+            <ColorRing
+              visible={true}
+              height="80"
+              width="80"
+              ariaLabel="blocks-loading"
+              wrapperStyle={{}}
+              wrapperClass="blocks-wrapper"
+              colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+            />
+          </LoadingContent>
+        }
+      ></Suspense>
       <hr />
       <Outlet />
     </>

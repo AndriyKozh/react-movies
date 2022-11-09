@@ -2,6 +2,8 @@
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
+import { ColorRing } from 'react-loader-spinner';
+import { LoadingContent } from '../Loading.style';
 
 // import MovieDetails from './MovieDetails/MovieDetails';
 // import Cast from './Cast/Cast';
@@ -17,7 +19,21 @@ export const App = () => {
   return (
     <div>
       <BrowserRouter>
-        <Suspense fallback={<div>Loading ...</div>}>
+        <Suspense
+          fallback={
+            <LoadingContent>
+              <ColorRing
+                visible={true}
+                height="80"
+                width="80"
+                ariaLabel="blocks-loading"
+                wrapperStyle={{}}
+                wrapperClass="blocks-wrapper"
+                colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+              />
+            </LoadingContent>
+          }
+        >
           <Routes>
             <Route path="/" element={<MainLayaut />}>
               <Route index element={<Home />} />
