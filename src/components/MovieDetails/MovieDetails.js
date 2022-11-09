@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
+import { Suspense } from 'react';
 import { getMoviesInfo } from 'Servis/Api';
 import { AiFillBackward } from 'react-icons/ai';
 import {
@@ -77,6 +78,7 @@ const MovieDetails = () => {
           <Link to="reviews">Reviews</Link>
         </MovieDetailsInfoList>
       </MovieDetailsInfoAdditional>
+      <Suspense fallback={<div>Loading ...</div>}></Suspense>
       <hr />
       <Outlet />
     </>

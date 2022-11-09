@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
 import Menu from '../Menu/Menu';
 
 const MainLayaut = () => {
@@ -6,7 +7,9 @@ const MainLayaut = () => {
     <div>
       <Menu />
       <hr />
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
