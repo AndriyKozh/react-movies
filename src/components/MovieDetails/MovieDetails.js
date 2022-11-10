@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 
 import { Suspense } from 'react';
 import { ColorRing } from 'react-loader-spinner';
@@ -21,10 +21,10 @@ const MovieDetails = () => {
   const { id } = useParams();
 
   const [movieInfo, setMovieInfo] = useState('');
-  const navigate = useNavigate();
-  const backLinkHref = () => navigate(-1);
-  // const location = useLocation();
-  // const backLinkHref = location.state?.from ?? '/';
+  // const navigate = useNavigate();
+  // const backLinkHref = () => navigate(-1);
+  const location = useLocation();
+  const linkBack = location.state?.from ?? '/movies';
   const { poster_path, title, release_date, overview, genres, vote_average } =
     movieInfo;
 
@@ -39,7 +39,7 @@ const MovieDetails = () => {
   }, [id]);
   return (
     <>
-      <Link onClick={backLinkHref}>
+      <Link to={linkBack}>
         <MovieDetailsBack>
           <AiFillBackward /> Go Back
         </MovieDetailsBack>
@@ -74,11 +74,15 @@ const MovieDetails = () => {
       <MovieDetailsInfoAdditional>
         <MovieDetailsInfoList>
           <MovieDetailsInfoSpan></MovieDetailsInfoSpan>
-          <Link to="cast">Cast</Link>
+          <Link to="cast" state={{ from: linkBack }}>
+            Cast
+          </Link>
         </MovieDetailsInfoList>
         <MovieDetailsInfoList>
           <MovieDetailsInfoSpan></MovieDetailsInfoSpan>
-          <Link to="reviews">Reviews</Link>
+          <Link to="reviews" state={{ from: linkBack }}>
+            Reviews
+          </Link>
         </MovieDetailsInfoList>
       </MovieDetailsInfoAdditional>
       <Suspense

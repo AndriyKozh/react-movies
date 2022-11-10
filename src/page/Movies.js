@@ -8,6 +8,7 @@ const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [submitContent, setSubmitContent] = useState([]);
+
   const queryRequest = searchParams.get('query') || '';
 
   useEffect(() => {
@@ -19,7 +20,9 @@ const Movies = () => {
           const querySubmit = await getSubmit(queryRequest);
           const queryText = querySubmit;
           setSubmitContent(queryText);
-        } catch (error) {}
+        } catch (error) {
+          console.log(error);
+        }
       };
       submitQuery();
     }

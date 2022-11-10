@@ -6,14 +6,16 @@ import { RevievsBlock, RevievsName, CastText } from './Reviews.style';
 const Revievs = () => {
   const { id } = useParams();
   const [infoReviews, setinfoReviews] = useState([]);
-  console.log(infoReviews);
+
   useEffect(() => {
     const getReviewsMovie = async () => {
       try {
         const reviews = await getRewiews(id);
         const revievsArr = reviews.results;
         setinfoReviews(revievsArr);
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     };
     getReviewsMovie();
   }, [id]);
